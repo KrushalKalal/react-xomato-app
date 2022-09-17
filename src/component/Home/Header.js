@@ -22,7 +22,6 @@ class Header extends Component{
                     <option value={item.city_id} key={item.city_id}>{item.city_name}</option>
                    
                 )
-                
             })
         }
       
@@ -36,6 +35,8 @@ class Header extends Component{
         .then((data) => {
             this.setState({restaurant:data})
         })
+
+        
     }
 
     renderRestaurant=(data)=>{
