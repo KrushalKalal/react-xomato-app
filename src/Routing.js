@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import Home from './component/Home/Home';
-import Listing from './component/Listing/Listing'
+import Listing from './component/Listing/ListingComponent'
 import Explore from './Explore';
 import Footer from './Footer';
 
