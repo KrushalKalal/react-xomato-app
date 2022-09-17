@@ -7,6 +7,7 @@ const OptionList = (props)=>{
         console.log(optionType)
         return optionType.map((item)=>{
             return(
+                 <div class="order_card col-lg-4 col-md-6 col-sm-12 col-xs-12">
                 <Link to={`/listing/${item.option_id}`} key={item._id}>
                         <img src={item.option_img} alt={item.option_img_alt}/>
                         <div class="order_text">
@@ -14,6 +15,7 @@ const OptionList = (props)=>{
                           <h4>{item.content}</h4>
                        </div>
                 </Link>
+                </div>
                 
             )
         })

@@ -17,11 +17,9 @@ class Option extends Component{
     render(){
         return(
             <section class="order_content">
-            <div class="row">
-               <div class="order_card col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                 <OptionList optionType={this.state.option}/>
+                 <div class="row">
+                   <OptionList optionType={this.state.option}/>
                 </div>
-            </div>
          
           
             
