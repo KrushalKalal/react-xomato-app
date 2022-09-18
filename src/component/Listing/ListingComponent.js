@@ -40,6 +40,7 @@ class ListingComponent extends Component{
 
     componentDidMount(){
         let optionId = this.props.match.params.optionId;
+        sessionStorage.setItem('optionId',optionId)
         axios.get(`${optionList}${optionId}`)
         .then((res) => {this.setState({options:res.data})})
     }

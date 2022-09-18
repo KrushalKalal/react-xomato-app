@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import {Link} from 'react-router-dom';
 import './Header.css';
 
 class Header extends Component{
@@ -7,7 +8,7 @@ class Header extends Component{
             <section>
             <div class="row listing_header_section">
                 <div class="col-md-2 zomato_logo">
-                   <a href="index.html"> <img src="https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png?fit=around|198:42&crop=198:42;*,*" alt="zomato"/></a>
+                   <Link to="/"> <img src="https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png?fit=around|198:42&crop=198:42;*,*" alt="zomato"/></Link>
                 </div>
                 <div class="col-md-7 search">
                     <i class="fas fa-map-marker-alt"></i>

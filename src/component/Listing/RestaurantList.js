@@ -9,7 +9,8 @@ const RestaurantList = (props) => {
                 return optionData.map((item) => {
                     return(
                         <div class="col-lg-4" key={item._id}>
-                        <div class="order_cardimg">
+                         <Link to={`/details?restid=${item.restaurant_id}`}>
+                            <div class="order_cardimg">
                             <img src={item.restaurant_img} alt={item.restaurant_name}/>
                             <div class="order_min"><p>{item.time}</p></div>
                        </div>
@@ -21,6 +22,7 @@ const RestaurantList = (props) => {
                                {item.rating}<i class="fa-solid fa-star"></i>
                            </div>
                        </div>
+                      </Link>
                        <div class="row ordercard_text">
                            <div class="col-md-7 order_type">
                                {item.cuisines[0].cuisine_name},{item.cuisines[1].cuisine_name}
@@ -43,7 +45,20 @@ const RestaurantList = (props) => {
                     </div>
                     )
                 })
+            }else{
+                return(
+                    <div>
+                        <h2>No Data As Per Filter</h2>
+                    </div>
+                )
             }
+        }else{
+            return(
+                <div>
+                    <img src="/images/loader.gif." alt="loader"/>
+                    <h2>Loading.....</h2>
+                </div>
+            )
         }
     }
     return(
