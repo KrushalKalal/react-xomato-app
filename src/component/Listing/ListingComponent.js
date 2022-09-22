@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import axios from 'axios';
 import CuisineFilter from './Filter/CuisineFilter';
 import CostFilter from './Filter/CostFilter';
+import RatingFilter from './Filter/RatingFilter';
 import RestaurantList from './RestaurantList';
 import Header from './Header'
 import './RestaurantList.css'
@@ -38,6 +39,9 @@ class ListingComponent extends Component{
                       />
                       <CostFilter optionId={this.props.match.params.optionId}
                       restPerCost={(data) => {this.setDataPerFilter(data)}}
+                      />
+                      <RatingFilter optionId={this.props.match.params.optionId}
+                      restPerRating={(data) => {this.setDataPerFilter(data)}}
                       />
                      </div>
                  </div>

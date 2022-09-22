@@ -12,7 +12,7 @@ const RestaurantList = (props) => {
                          <Link to={`/details?restid=${item.restaurant_id}`}>
                             <div class="order_cardimg">
                             <img src={item.restaurant_img} alt={item.restaurant_name}/>
-                            <div class="order_min"><p>{item.time}</p></div>
+                            <div class="order_min"><p>{item.time} min</p></div>
                        </div>
                        <div class="row ordercard_text">
                            <div class="col-md-9 order_name">
@@ -55,7 +55,7 @@ const RestaurantList = (props) => {
         }else{
             return(
                 <div>
-                    <img src="/images/loader.gif." alt="loader"/>
+                    <img src="/images/loader.gif" alt="loader"/>
                     <h2>Loading.....</h2>
                 </div>
             )
