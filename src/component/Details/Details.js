@@ -4,9 +4,11 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import MenuDisplay from './MenuDisplay'
 
 
 const RestaurantUrl= "https://xomato-api.herokuapp.com/api/details"
+const MenuUrl = "https://xomato-api.herokuapp.com/api/menu"
 
 
 class Details extends Component {
@@ -16,8 +18,19 @@ class Details extends Component {
 
         this.state={
             details:'',
-            mealId:sessionStorage.getItem('mealId')
+            menuList:'',
+            mealId:sessionStorage.getItem('mealId'),
+            userItem:''
         }
+    }
+
+    addToCart = (data) => {
+        this.setState({userItem:data})
+    }
+
+    proceed=()=>{
+        sessionStorage.setItem('menu',this.state.userItem);
+        this.props.history.push(`/placeOrder/${this.state.details.restaurant_name}`)
     }
 
     render(){
@@ -61,10 +74,15 @@ class Details extends Component {
                         </Tabs>
                         <div>
                             <Link to={`/listing/${this.state.mealId}`} className="btn btn-danger">Back</Link> &nbsp;
-                            
+                            <button className="btn btn-success"  onClick={this.proceed}>Proceed</button>
                         </div>
                     </div>
                 </div>
+                <div className="col-md-12">
+                    <MenuDisplay menudata={this.state.menuList}
+                    finalOrder={(data)=>{this.addToCart(data)}}
+                    />
+               </div>
             </>
         )
     }
@@ -72,7 +90,8 @@ class Details extends Component {
     async componentDidMount(){
         let restId = this.props.location.search.split('=')[1];
         let response = await axios.get(`${RestaurantUrl}/${restId}`)
-        this.setState({details:response.data[0]})
+        let menudata = await axios.get(`${MenuUrl}/${restId}`)
+        this.setState({details:response.data[0],menuList:menudata.data})
     }
 }
 
